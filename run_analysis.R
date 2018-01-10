@@ -8,10 +8,10 @@ if (!file.exists("galaxy.zip")) {
 if (!file.exists("UCI HAR Dataset")) { 
         unzip("galaxy.zip")}
 
-#load data for activities and recordings (mean and standard deviation only)
+#load data for activities and recordings
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
 features <- read.table("UCI HAR Dataset/features.txt")
-features_meanSTD <- grep("mean|std",features[,2])
+features_meanSTD <- grep("mean\\(\\)|std\\(\\)",features[,2])
 features_meanSTD.names <- features[features_meanSTD,2]
 features_meanSTD.names = gsub('-mean', 'Mean', features_meanSTD.names)
 features_meanSTD.names = gsub('-std', 'Std', features_meanSTD.names)
